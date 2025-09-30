@@ -1,493 +1,1105 @@
-<!DOCTYPE HTML>
-
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <title>Talhah Raheem's Personal Website</title>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-    <link rel="stylesheet" href="assets/css/main.css" />
-    <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Talhah Raheem - Computer Science Student</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
+            color: #ffffff;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(15, 15, 35, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 0;
+            transition: all 0.3s ease;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #00d4ff;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: #00d4ff;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #00d4ff;
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            padding-top: 80px;
+        }
+
+        .hero-image-container {
+            margin-bottom: 2rem;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero-image {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid #00d4ff;
+            box-shadow: 0 20px 40px rgba(0, 212, 255, 0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .hero-image:hover {
+            transform: scale(1.05);
+        }
+
+        .hero-content h1 {
+            font-size: 4rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #00d4ff, #0099cc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: fadeInUp 1s ease 0.2s both;
+        }
+
+        .hero-content .subtitle {
+            font-size: 1.5rem;
+            color: #a0a0a0;
+            margin-bottom: 0.5rem;
+            animation: fadeInUp 1s ease 0.4s both;
+        }
+
+        .hero-content .email {
+            font-size: 1.1rem;
+            color: #666;
+            margin-bottom: 2rem;
+            animation: fadeInUp 1s ease 0.6s both;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            animation: fadeInUp 1s ease 0.8s both;
+        }
+
+        .social-links a {
+            color: #00d4ff;
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+            padding: 10px;
+            border-radius: 50%;
+            background: rgba(0, 212, 255, 0.1);
+        }
+
+        .social-links a:hover {
+            color: #ffffff;
+            background: #00d4ff;
+            transform: translateY(-3px);
+        }
+
+        /* About Section */
+        .section {
+            padding: 5rem 0;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: #00d4ff;
+            position: relative;
+        }
+
+        .section-icon {
+            display: block;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: #00d4ff;
+            opacity: 0.8;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .profile-image {
+            width: 100%;
+            max-width: 300px;
+            height: 300px;
+            border-radius: 20px;
+            object-fit: cover;
+            box-shadow: 0 20px 40px rgba(0, 212, 255, 0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .profile-image:hover {
+            transform: scale(1.05);
+        }
+
+        .about-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .about-text p {
+            margin-bottom: 1.5rem;
+            color: #e0e0e0;
+        }
+
+        .highlight {
+            color: #00d4ff;
+            font-weight: 600;
+        }
+
+        /* Skills Section */
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .skill-tag {
+            background: rgba(0, 212, 255, 0.1);
+            color: #00d4ff;
+            padding: 0.6rem 1.2rem;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            cursor: default;
+            border: 1px solid rgba(0, 212, 255, 0.3);
+        }
+
+        .skill-tag:hover {
+            background: #00d4ff;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 212, 255, 0.4);
+        }
+
+        /* Experience Section */
+        .experience-timeline {
+            position: relative;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem 0;
+        }
+
+        .experience-timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, #00d4ff, #0099cc);
+            transform: translateX(-50%);
+        }
+
+        .experience-timeline .timeline-item {
+            position: relative;
+            margin-bottom: 4rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .experience-timeline .timeline-item:nth-child(odd) {
+            flex-direction: row;
+        }
+
+        .experience-timeline .timeline-item:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+
+        .experience-timeline .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            width: 20px;
+            height: 20px;
+            background: #00d4ff;
+            border-radius: 50%;
+            border: 4px solid #0f0f23;
+            box-shadow: 0 0 20px rgba(0, 212, 255, 0.5);
+            transform: translate(-50%, -50%);
+            z-index: 2;
+        }
+
+        .experience-timeline .timeline-content {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 2rem;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            width: 45%;
+            position: relative;
+        }
+
+        .experience-timeline .timeline-item:nth-child(odd) .timeline-content {
+            margin-right: auto;
+            margin-left: 0;
+        }
+
+        .experience-timeline .timeline-item:nth-child(even) .timeline-content {
+            margin-left: auto;
+            margin-right: 0;
+        }
+
+        .experience-timeline .timeline-item::after {
+            display: none;
+        }
+
+        .experience-timeline .timeline-content h3 {
+            color: #00d4ff;
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .experience-timeline .timeline-date {
+            color: #a0a0a0;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Responsive design for alternating timeline */
+        @media (max-width: 768px) {
+            .experience-timeline::before {
+                left: 2rem;
+                transform: none;
+            }
+
+            .experience-timeline .timeline-item {
+                flex-direction: row !important;
+                padding-left: 3rem;
+            }
+
+            .experience-timeline .timeline-item::before {
+                left: 2rem;
+                transform: translateY(-50%);
+            }
+
+            .experience-timeline .timeline-content {
+                width: 100%;
+                margin: 0 !important;
+            }
+        }
+
+        .resume-btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #00d4ff, #0099cc);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            margin-top: 2rem;
+        }
+
+        .resume-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0, 212, 255, 0.3);
+        }
+
+        /* Education Section */
+        .education-timeline {
+            position: relative;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem 0;
+        }
+
+        .education-timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, #00d4ff, #0099cc);
+            transform: translateX(-50%);
+        }
+
+        .education-timeline .timeline-item {
+            position: relative;
+            margin-bottom: 4rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .education-timeline .timeline-item:nth-child(odd) {
+            flex-direction: row;
+        }
+
+        .education-timeline .timeline-item:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+
+        .education-timeline .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            width: 20px;
+            height: 20px;
+            background: #00d4ff;
+            border-radius: 50%;
+            border: 4px solid #0f0f23;
+            box-shadow: 0 0 20px rgba(0, 212, 255, 0.5);
+            transform: translate(-50%, -50%);
+            z-index: 2;
+        }
+
+        .education-timeline .timeline-content {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 2rem;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            width: 45%;
+            position: relative;
+        }
+
+        .education-timeline .timeline-item:nth-child(odd) .timeline-content {
+            margin-right: auto;
+            margin-left: 0;
+        }
+
+        .education-timeline .timeline-item:nth-child(even) .timeline-content {
+            margin-left: auto;
+            margin-right: 0;
+        }
+
+        .education-timeline .timeline-item::after {
+            display: none;
+        }
+
+        .education-timeline .timeline-content h3 {
+            color: #00d4ff;
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .education-timeline .timeline-date {
+            color: #a0a0a0;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Responsive design for education timeline */
+        @media (max-width: 768px) {
+            .education-timeline::before {
+                left: 2rem;
+                transform: none;
+            }
+
+            .education-timeline .timeline-item {
+                flex-direction: row !important;
+                padding-left: 3rem;
+            }
+
+            .education-timeline .timeline-item::before {
+                left: 2rem;
+                transform: translateY(-50%);
+            }
+
+            .education-timeline .timeline-content {
+                width: 100%;
+                margin: 0 !important;
+            }
+        }
+
+        /* Certifications Section */
+        .certifications-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .cert-tag {
+            background: rgba(0, 212, 255, 0.1);
+            color: #00d4ff;
+            padding: 0.6rem 1.2rem;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            cursor: default;
+            border: 1px solid rgba(0, 212, 255, 0.3);
+        }
+
+        .cert-tag:hover {
+            background: #00d4ff;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 212, 255, 0.4);
+        }
+
+        /* Projects Section */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 212, 255, 0.2);
+        }
+
+        .project-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .project-card:hover .project-image {
+            transform: scale(1.05);
+        }
+
+        .project-content {
+            padding: 1.5rem;
+        }
+
+        .project-content h3 {
+            color: #00d4ff;
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .project-content p {
+            color: #e0e0e0;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .project-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .project-link {
+            color: #00d4ff;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+        }
+
+        .project-link:hover {
+            color: #ffffff;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Contact Section */
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .contact-info h3 {
+            color: #00d4ff;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .contact-info p {
+            color: #e0e0e0;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+        }
+
+        .contact-details {
+            margin-bottom: 2rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+            color: #e0e0e0;
+        }
+
+        .contact-item i {
+            color: #00d4ff;
+            margin-right: 1rem;
+            width: 20px;
+        }
+
+        .social-links-contact {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-link {
+            display: flex;
+            align-items: center;
+            padding: 0.8rem 1.5rem;
+            background: rgba(0, 212, 255, 0.1);
+            color: #00d4ff;
+            text-decoration: none;
+            border-radius: 25px;
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            background: #00d4ff;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 212, 255, 0.4);
+        }
+
+        .social-link i {
+            margin-right: 0.5rem;
+        }
+
+        .contact-form {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 2rem;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            color: #00d4ff;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            border-radius: 8px;
+            color: #ffffff;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #00d4ff;
+            box-shadow: 0 0 10px rgba(0, 212, 255, 0.3);
+        }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: #a0a0a0;
+        }
+
+        .submit-btn {
+            background: linear-gradient(135deg, #00d4ff, #0099cc);
+            color: white;
+            padding: 0.8rem 2rem;
+            border: none;
+            border-radius: 25px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0, 212, 255, 0.3);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+        }
+
+        /* Scroll indicator */
+        .scroll-indicator {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: rgba(0, 212, 255, 0.2);
+            z-index: 1001;
+        }
+
+        .scroll-progress {
+            height: 100%;
+            background: linear-gradient(90deg, #00d4ff, #0099cc);
+            width: 0%;
+            transition: width 0.1s ease;
+        }
+    </style>
 </head>
-<body class="is-preload">
-
-    <!-- Wrapper -->
-    <div id="wrapper">
-
-        <!-- Header -->
-        <header id="header">
-            <div class="logo">
-                <span class="icon fa-gem"></span>
-            </div>
-            <div class="content">
-                <div class="inner">
-                    <h1 style="color: #20b2aa; margin-bottom: 15px; font-size: 2.5em; font-weight: 600;">Talhah Raheem</h1>
-                    <p style="font-size: 1.2em; color: #e8e8e8; margin-bottom: 10px;">Computer Science Student @ CSUF</p>
-                    <p style="color: #b8b8b8; font-size: 0.95em;">raheem.talhah@gmail.com</p>
-                    <div style="margin-top: 20px;">
-                        <a href="https://github.com/Talhah-Raheem" target="_blank" style="color: #87ceeb; text-decoration: none; margin-right: 20px; font-size: 1.1em; transition: color 0.3s ease;" onmouseover="this.style.color='#20b2aa'" onmouseout="this.style.color='#87ceeb'">GitHub</a>
-                        <a href="https://www.linkedin.com/in/raheemtalhah" target="_blank" style="color: #87ceeb; text-decoration: none; font-size: 1.1em; transition: color 0.3s ease;" onmouseover="this.style.color='#20b2aa'" onmouseout="this.style.color='#87ceeb'">LinkedIn</a>
-                    </div>
-                </div>
-            </div>
-            <nav>
-                <ul>
-                    <li><a href="#intro">Intro</a></li>
-                    <li><a href="#work">Work</a></li>
-                    <li><a href="#school">School</a></li>
-                    <li><a href="#projects">Projects</a></li>
-                </ul>
-            </nav>
-        </header>
-
-        <!-- Main -->
-        <div id="main">
-
-            <!-- Intro -->
-            <article id="intro">
-                <h2 class="major" style="text-align: center; margin-bottom: 30px; color: #20b2aa; font-weight: 600;">About Me</h2>
-                
-                <div style="text-align: center; margin-bottom: 40px;">
-                    <img src="images/face.jpg" alt="image of Talhah Raheem" style="width: 300px; height: 300px; object-fit: cover; border-radius: 20px; box-shadow: 0 15px 35px rgba(0,0,0,0.3); display: block; margin: 0 auto;" />
-                </div>
-
-                <div style="background: rgba(255, 255, 255, 0.05); padding: 35px; border-radius: 20px; border-left: 4px solid #20b2aa; max-width: 900px; margin: 0 auto;">
-                    <h3 style="color: #20b2aa; margin-bottom: 20px; text-align: center; font-weight: 600; font-size: 1.3em;">Welcome!</h3>
-                    <p style="margin-bottom: 20px; line-height: 1.7; text-align: center; font-size: 1.05em;">I'm <strong style="color: #20b2aa;">Talhah Raheem</strong>, a senior at CSUF studying Computer Science. Here, you can explore my projects, learn more about my background, and find ways to connect.</p>
-                    <p style="margin-bottom: 20px; line-height: 1.7; text-align: center;">I'm passionate about <strong style="color: #87ceeb;">AI</strong>, <strong style="color: #87ceeb;">web development</strong>, and <strong style="color: #87ceeb;">game development</strong>. Lately, I've been diving deeper into building real-world applications, constantly exploring new tools and technologies to level up my skills.</p>
-                    <p style="line-height: 1.7; text-align: center; color: #b8b8b8;">When I'm not coding, you'll probably find me at the gym, reading up on tech trends, or spending time with the people I care about.</p>
-                </div>
-			</article>
-
-            <!-- Work -->
-            <article id="work">
-                <h2 class="major" style="text-align: center; margin-bottom: 30px; color: #20b2aa; font-weight: 600;">Experience</h2>
-                
-                <div style="margin-bottom: 30px;">
-                    <img src="images/puzzle.jpg" alt="puzzle pieces" style="width: 100%; height: 200px; object-fit: cover; border-radius: 15px; margin-bottom: 25px;" />
-                </div>
-
-                <div style="display: grid; gap: 25px;">
-                    <div style="background: rgba(255, 255, 255, 0.05); padding: 25px; border-radius: 15px; border-left: 4px solid #20b2aa;">
-                        <h3 style="color: #20b2aa; margin-bottom: 10px; font-weight: 600;">Customer Service Background</h3>
-                        <p style="line-height: 1.6;">I have a diverse background in customer service, which has strengthened my communication, teamwork, and problem-solving skills. I'm now eager to apply these abilities in the field of computer science.</p>
-                    </div>
-
-                    <div style="background: rgba(255, 255, 255, 0.05); padding: 25px; border-radius: 15px; border-left: 4px solid #87ceeb;">
-                        <h3 style="color: #87ceeb; margin-bottom: 10px; font-weight: 600;">Barista Experience</h3>
-                        <p style="line-height: 1.6;">One of the most impactful roles I've had was working as a barista. In this fast-paced environment, I delivered excellent customer service, balanced multiple tasks at once, and collaborated closely with my team to keep operations running smoothly—all while maintaining a friendly and welcoming atmosphere.</p>
-                    </div>
-
-                    <div style="background: rgba(255, 255, 255, 0.05); padding: 25px; border-radius: 15px; border-left: 4px solid #20b2aa;">
-                        <h3 style="color: #20b2aa; margin-bottom: 10px; font-weight: 600;">Leadership at CSUF</h3>
-                        <p style="line-height: 1.6;">At CSUF, I currently serve as the <strong>Vice President of Projects for the Muslim Tech Collaborative (MTC)</strong>, where I lead hands-on tech projects to help students better understand real-world applications. I'm also a <strong>Developer Officer for the Association for Computing Machinery (ACM)</strong>, where I host and organize workshops on computer science topics to support student learning and skill-building.</p>
-                    </div>
-
-                    <div style="text-align: center; margin-top: 20px;">
-                        <a href="https://docs.google.com/document/d/14Y-dKSXRC9rr-_t1q_eJ6ibMIWfPWS-wVwTpMQ2OVqA/preview" target="_blank" rel="noopener noreferrer" style="background: #20b2aa; color: white; padding: 12px 25px; border-radius: 25px; text-decoration: none; display: inline-block; font-weight: bold; transition: all 0.3s ease;" onmouseover="this.style.background='#87ceeb'; this.style.transform='translateY(-2px)'" onmouseout="this.style.background='#20b2aa'; this.style.transform='translateY(0)'">View Resume</a>
-                    </div>
-                </div>
-            </article>
-
-            <!-- School -->
-            <article id="school">
-                <h2 class="major" style="text-align: center; margin-bottom: 30px; color: #20b2aa; font-weight: 600;">Education</h2>
-                
-                <div style="margin-bottom: 30px;">
-                    <img src="images/TITANS_Letters.jpg" alt="CSUF TITAN letters" style="width: 100%; height: 200px; object-fit: cover; border-radius: 15px; margin-bottom: 25px;" />
-                </div>
-
-                <div style="position: relative;">
-                    <!-- Timeline line -->
-                    <div style="position: absolute; left: 30px; top: 0; bottom: 0; width: 2px; background: linear-gradient(to bottom, #20b2aa, #87ceeb);"></div>
-                    
-                    <!-- Orange Coast College -->
-                    <div style="position: relative; margin-bottom: 40px; padding-left: 80px;">
-                        <div style="position: absolute; left: 20px; top: 5px; width: 20px; height: 20px; background: #87ceeb; border-radius: 50%; border: 3px solid #fff; box-shadow: 0 0 10px rgba(135, 206, 235, 0.5);"></div>
-                        <div style="background: rgba(255, 255, 255, 0.05); padding: 25px; border-radius: 15px; border-left: 4px solid #87ceeb;">
-                            <h3 style="color: #87ceeb; margin-bottom: 10px; font-weight: 600;">Orange Coast College (OCC)</h3>
-                            <p style="color: #b8b8b8; margin-bottom: 10px; font-size: 0.9em;">2019 - 2021</p>
-                            <p style="line-height: 1.6;">I attended Orange Coast College (OCC) for 2 years, where I completed all my General Education requirements. During my time at OCC, I also earned a C++ certificate, which laid a strong foundation for my programming skills and sparked my interest in software development.</p>
-                        </div>
-                    </div>
-
-                    <!-- CSUF -->
-                    <div style="position: relative; margin-bottom: 40px; padding-left: 80px;">
-                        <div style="position: absolute; left: 20px; top: 5px; width: 20px; height: 20px; background: #20b2aa; border-radius: 50%; border: 3px solid #fff; box-shadow: 0 0 10px rgba(32, 178, 170, 0.5);"></div>
-                        <div style="background: rgba(255, 255, 255, 0.05); padding: 25px; border-radius: 15px; border-left: 4px solid #20b2aa;">
-                            <h3 style="color: #20b2aa; margin-bottom: 10px; font-weight: 600;">California State University, Fullerton (CSUF)</h3>
-                            <p style="color: #b8b8b8; margin-bottom: 10px; font-size: 0.9em;">2021 - Present</p>
-                            <p style="line-height: 1.6;">I have transferred to California State University, Fullerton (CSUF), where I am currently pursuing a Bachelor's degree in Computer Science. At CSUF, I am focusing on deepening my knowledge in various areas of computer science, including software engineering, algorithms, and artificial intelligence. I am excited to continue my education and work on projects that will prepare me for a career in tech.</p>
-                        </div>
-                    </div>
-
-                    <!-- Achievements -->
-                    <div style="position: relative; padding-left: 80px;">
-                        <div style="position: absolute; left: 20px; top: 5px; width: 20px; height: 20px; background: #87ceeb; border-radius: 50%; border: 3px solid #fff; box-shadow: 0 0 10px rgba(135, 206, 235, 0.5);"></div>
-                        <div style="background: rgba(255, 255, 255, 0.05); padding: 25px; border-radius: 15px; border-left: 4px solid #87ceeb;">
-                            <h3 style="color: #87ceeb; margin-bottom: 15px; font-weight: 600;">Certificates and Achievements</h3>
-                            <ul style="list-style: none; padding: 0;">
-                                <li style="margin-bottom: 8px; padding: 8px 12px; background: rgba(135, 206, 235, 0.1); border-radius: 8px; border-left: 3px solid #87ceeb;">C++ Programming Certificate - Orange Coast College</li>
-                                <li style="margin-bottom: 8px; padding: 8px 12px; background: rgba(135, 206, 235, 0.1); border-radius: 8px; border-left: 3px solid #87ceeb;">Associates Degree - Orange Coast College</li>
-                </ul>
-                        </div>
-                    </div>
-                </div>
-            </article>
-
-
-			<!-- Projects -->
-            <article id="projects">
-                <h2 class="major" style="text-align: center; margin-bottom: 30px; color: #20b2aa; font-weight: 600;">Projects</h2>
-                
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-bottom: 30px;">
-                    <!-- Project 1 -->
-                    <div style="background: rgba(255, 255, 255, 0.05); padding: 20px; border-radius: 15px; border: 1px solid rgba(255, 255, 255, 0.1); transition: all 0.3s ease; cursor: pointer; position: relative; overflow: hidden;" onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 15px 35px rgba(0,0,0,0.3)'; this.style.borderColor='#20b2aa';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'; this.style.borderColor='rgba(255, 255, 255, 0.1)';">
-                        <img src="images/rc.png" alt="RC car" style="width: 100%; height: 200px; object-fit: cover; border-radius: 10px; margin-bottom: 15px; transition: transform 0.3s ease;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'" />
-                        <h3 style="margin-bottom: 10px; color: #20b2aa; font-weight: 600;">Self Driving RC using PI</h3>
-                        <p style="font-size: 0.9em; line-height: 1.5; margin-bottom: 15px;">Currently developing a self-driving RC car powered by a Raspberry Pi and camera module. The system uses AI to detect objects and measure distance, triggering lights and sound alerts when obstacles get too close. A web app hosted on the Pi streams the live camera feed, with plans to integrate FastAPI for real-time data processing and smarter navigation decisions.</p>
-                        <div style="margin-top: 15px;">
-                            <!-- <a href="#" style="color: #4CAF50; text-decoration: none; font-size: 0.9em; margin-right: 15px; transition: color 0.3s ease;">🔗 View Project</a> -->
-                            <!-- <a href="#" style="color: #2196F3; text-decoration: none; font-size: 0.9em; transition: color 0.3s ease;">📁 GitHub</a> -->
-                            <p style="color: rgba(255, 255, 255, 0.5); font-size: 0.8em; font-style: italic;">Links coming soon...</p>
-                        </div>
-                    </div>
-
-                    <!-- Project 2 -->
-                    <div style="background: rgba(255, 255, 255, 0.05); padding: 20px; border-radius: 15px; border: 1px solid rgba(255, 255, 255, 0.1); transition: all 0.3s ease; cursor: pointer; position: relative; overflow: hidden;" onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 15px 35px rgba(0,0,0,0.3)'; this.style.borderColor='#87ceeb';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'; this.style.borderColor='rgba(255, 255, 255, 0.1)';">
-                        <img src="images/nexus.png" alt="Nexus" style="width: 100%; height: 200px; object-fit: cover; border-radius: 10px; margin-bottom: 15px; transition: transform 0.3s ease;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'" />
-                        <h3 style="margin-bottom: 10px; color: #87ceeb; font-weight: 600;">Nexus 2-D Platforming Game</h3>
-                        <p style="font-size: 0.9em; line-height: 1.5; margin-bottom: 15px;">Players take control of Nix, a talented warrior who has ended up in the Anuc region, far from his home country, in the action-packed 2D side-scroller Nexus. Navigate through difficult levels with changing settings, sophisticated parkour sequences, and frightening enemies.</p>
-                        <div style="margin-top: 15px;">
-                            <!-- <a href="#" style="color: #4CAF50; text-decoration: none; font-size: 0.9em; margin-right: 15px; transition: color 0.3s ease;">🎮 Play Game</a> -->
-                            <!-- <a href="#" style="color: #2196F3; text-decoration: none; font-size: 0.9em; transition: color 0.3s ease;">📁 GitHub</a> -->
-                            <p style="color: rgba(255, 255, 255, 0.5); font-size: 0.8em; font-style: italic;">Links coming soon...</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-bottom: 30px;">
-                    <!-- Project 3 -->
-                    <div style="background: rgba(255, 255, 255, 0.05); padding: 20px; border-radius: 15px; border: 1px solid rgba(255, 255, 255, 0.1); transition: all 0.3s ease; cursor: pointer; position: relative; overflow: hidden;" onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 15px 35px rgba(0,0,0,0.3)'; this.style.borderColor='#20b2aa';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'; this.style.borderColor='rgba(255, 255, 255, 0.1)';">
-                        <img src="images/migration.jpeg" alt="Cloud Migration" style="width: 100%; height: 200px; object-fit: cover; border-radius: 10px; margin-bottom: 15px; transition: transform 0.3s ease;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'" />
-                        <h3 style="margin-bottom: 10px; color: #20b2aa; font-weight: 600;">Cloud Migration and OS Hardening</h3>
-                        <p style="font-size: 0.9em; line-height: 1.5; margin-bottom: 15px;">Oversaw the transfer of three virtual machines to a safe cloud environment on Microsoft Azure: Kali Linux, Windows Server 2022, and Metasploitable. I gained practical experience with risk assessment, OS hardening, utilizing cloud tools to improve operational efficiency, and Active Directory on Windows Server 2022.</p>
-                        <div style="margin-top: 15px;">
-                            <!-- <a href="#" style="color: #4CAF50; text-decoration: none; font-size: 0.9em; margin-right: 15px; transition: color 0.3s ease;">📊 View Report</a> -->
-                            <!-- <a href="#" style="color: #2196F3; text-decoration: none; font-size: 0.9em; transition: color 0.3s ease;">📁 Documentation</a> -->
-                            <p style="color: rgba(255, 255, 255, 0.5); font-size: 0.8em; font-style: italic;">Links coming soon...</p>
-                        </div>
-                    </div>
-
-                    <!-- Project 4 - Placeholder for future project -->
-                    <div style="background: rgba(255, 255, 255, 0.02); padding: 20px; border-radius: 15px; border: 2px dashed rgba(255, 255, 255, 0.2); display: flex; align-items: center; justify-content: center; min-height: 300px; transition: all 0.3s ease;" onmouseover="this.style.borderColor='rgba(255, 255, 255, 0.4)'; this.style.background='rgba(255, 255, 255, 0.05)'" onmouseout="this.style.borderColor='rgba(255, 255, 255, 0.2)'; this.style.background='rgba(255, 255, 255, 0.02)'">
-                        <p style="color: rgba(255, 255, 255, 0.5); font-style: italic; text-align: center;">More projects coming soon...</p>
-                    </div>
-                </div>
-                
-            </article>
-
-            <!-- Contact -->
-            <!-- <article id="contact">
-                <h2 class="major">Contact</h2>
-                <form method="post" action="#">
-                    <div class="fields">
-                        <div class="field half">
-                            <label for="name">Name</label>
-                            <input type="text" name="name" id="name" />
-                        </div>
-                        <div class="field half">
-                            <label for="email">Email</label>
-                            <input type="text" name="email" id="email" />
-                        </div>
-                        <div class="field">
-                            <label for="message">Message</label>
-                            <textarea name="message" id="message" rows="4"></textarea>
-                        </div>
-                    </div>
-                    <ul class="actions">
-                        <li><input type="submit" value="Send Message" class="primary" /></li>
-                        <li><input type="reset" value="Reset" /></li>
-                    </ul>
-                </form> -->
-                <!-- <ul class="icons">
-                    <li><a href="https://twitter.com/yourtwitterhandle" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
-                    <li><a href="https://facebook.com/yourfacebookprofile" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>         } These are social media tags
-                    <li><a href="https://instagram.com/yourinstagramprofile" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
-                    <li><a href="https://github.com/yourgithubusername" class="icon brands fa-github"><span class="label">GitHub</span></a></li> -->
-                <!-- </ul>
-            </article> -->
-
-        <!-- </div>
+<body>
+    <!-- Scroll Progress Indicator -->
+    <div class="scroll-indicator">
+        <div class="scroll-progress" id="scrollProgress"></div>
     </div>
 
-    <script src="assets/js/jquery.min.js"></script>
-    <script src="assets/js/browser.min.js"></script>
-    <script src="assets/js/breakpoints.min.js"></script>
-    <script src="assets/js/util.js"></script>
-    <script src="assets/js/main.js"></script>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-container">
+                <div class="logo">Talhah Raheem</div>
+                <ul class="nav-links">
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#experience">Experience</a></li>
+                    <li><a href="#education">Education</a></li>
+                    <li><a href="#certifications">Certifications</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-image-container">
+                    <img src="images/face.jpg" alt="Talhah Raheem" class="hero-image">
+                </div>
+                <h1>Talhah Raheem</h1>
+                <p class="subtitle">Computer Science Student @ CSUF</p>
+                <p class="email">raheem.talhah@gmail.com</p>
+                <div class="social-links">
+                    <a href="https://github.com/Talhah-Raheem" target="_blank"><i class="fab fa-github"></i></a>
+                    <a href="https://www.linkedin.com/in/raheemtalhah" target="_blank"><i class="fab fa-linkedin"></i></a>
+                </div>
+                <div style="margin-top: 2rem;">
+                    <a href="https://docs.google.com/document/d/14Y-dKSXRC9rr-_t1q_eJ6ibMIWfPWS-wVwTpMQ2OVqA/preview" target="_blank" class="resume-btn">View Resume</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section">
+        <div class="container">
+            <h2 class="section-title">
+                <i class="fas fa-user section-icon"></i>
+                About Me
+            </h2>
+            <div class="about-text" style="max-width: 800px; margin: 0 auto; text-align: center;">
+                <p style="font-size: 1.2rem; margin-bottom: 2rem;">I'm <span class="highlight">Talhah Raheem</span>, a senior at CSUF studying Computer Science. Here, you can explore my projects, learn more about my background, and find ways to connect.</p>
+                <p style="font-size: 1.1rem; margin-bottom: 2rem;">I'm passionate about <span class="highlight">AI</span>, <span class="highlight">web development</span>, and <span class="highlight">game development</span>. Lately, I've been diving deeper into building real-world applications, constantly exploring new tools and technologies to level up my skills.</p>
+                <p style="font-size: 1.1rem;">When I'm not coding, you'll probably find me at the gym, playing a sport, or playing Rainbow Six Siege.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="section">
+        <div class="container">
+            <h2 class="section-title">
+                <i class="fas fa-code section-icon"></i>
+                Skills
+            </h2>
+            <div class="skills-container">
+                <span class="skill-tag">Python</span>
+                <span class="skill-tag">Java</span>
+                <span class="skill-tag">C++</span>
+                <span class="skill-tag">JavaScript</span>
+                <span class="skill-tag">HTML/CSS</span>
+                <span class="skill-tag">SQL</span>
+                <span class="skill-tag">React</span>
+                <span class="skill-tag">Node.js</span>
+                <span class="skill-tag">Git</span>
+                <span class="skill-tag">Docker</span>
+                <span class="skill-tag">Azure</span>
+                <span class="skill-tag">FastAPI</span>
+                <span class="skill-tag">Machine Learning</span>
+                <span class="skill-tag">Web Development</span>
+                <span class="skill-tag">Game Development</span>
+                <span class="skill-tag">Cloud Computing</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="section">
+        <div class="container">
+            <h2 class="section-title">
+                <i class="fas fa-briefcase section-icon"></i>
+                Experience
+            </h2>
+            <div class="experience-timeline">
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>Vice President of Projects - Muslim Tech Collaborative (MTC)</h3>
+                        <p class="timeline-date">2023 - Present</p>
+                        <p>Leading hands-on tech projects to help students better understand real-world applications. Organizing workshops and events to bridge the gap between academic learning and practical implementation in the tech industry.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>Developer Officer - Association for Computing Machinery (ACM)</h3>
+                        <p class="timeline-date">2023 - Present</p>
+                        <p>Hosting and organizing workshops on computer science topics to support student learning and skill-building. Creating educational content and facilitating peer-to-peer learning opportunities for CSUF students.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>Barista Experience</h3>
+                        <p class="timeline-date">2020 - 2022</p>
+                        <p>Delivered excellent customer service in a fast-paced environment, balanced multiple tasks simultaneously, and collaborated closely with team members to maintain smooth operations while creating a welcoming atmosphere for customers.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>Customer Service Background</h3>
+                        <p class="timeline-date">2019 - 2022</p>
+                        <p>Developed strong communication, teamwork, and problem-solving skills through diverse customer service roles. Gained valuable experience in handling complex situations and working effectively with diverse teams.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education" class="section">
+        <div class="container">
+            <h2 class="section-title">
+                <i class="fas fa-graduation-cap section-icon"></i>
+                Education
+            </h2>
+            <div class="education-timeline">
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>California State University, Fullerton (CSUF)</h3>
+                        <p class="timeline-date">2021 - Present</p>
+                        <p>Currently pursuing a Bachelor's degree in Computer Science. Focusing on deepening knowledge in software engineering, algorithms, and artificial intelligence. Excited to continue education and work on projects that will prepare for a career in tech.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>Orange Coast College (OCC)</h3>
+                        <p class="timeline-date">2019 - 2021</p>
+                        <p>Completed all General Education requirements and earned a C++ certificate. This laid a strong foundation for programming skills and sparked interest in software development.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certifications & Awards Section -->
+    <section id="certifications" class="section">
+        <div class="container">
+            <h2 class="section-title">
+                <i class="fas fa-award section-icon"></i>
+                Certifications & Awards
+            </h2>
+            <div class="certifications-container">
+                <span class="cert-tag">C++ Programming Certificate</span>
+                <span class="cert-tag">Orange Coast College</span>
+                <span class="cert-tag">Associates Degree</span>
+                <span class="cert-tag">Orange Coast College</span>
+                <span class="cert-tag">Vice President of Projects</span>
+                <span class="cert-tag">Muslim Tech Collaborative</span>
+                <span class="cert-tag">Developer Officer</span>
+                <span class="cert-tag">Association for Computing Machinery</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="section">
+        <div class="container">
+            <h2 class="section-title">
+                <i class="fas fa-project-diagram section-icon"></i>
+                Projects
+            </h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <img src="images/rc.png" alt="Self Driving RC Car" class="project-image">
+                    <div class="project-content">
+                        <h3>Self Driving RC using PI</h3>
+                        <p>Currently developing a self-driving RC car powered by a Raspberry Pi and camera module. The system uses AI to detect objects and measure distance, triggering lights and sound alerts when obstacles get too close. A web app hosted on the Pi streams the live camera feed, with plans to integrate FastAPI for real-time data processing and smarter navigation decisions.</p>
+                        <div class="project-links">
+                            <span style="color: rgba(255, 255, 255, 0.5); font-size: 0.8em; font-style: italic;">Links coming soon...</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <img src="images/nexus.png" alt="Nexus Game" class="project-image">
+                    <div class="project-content">
+                        <h3>Nexus 2-D Platforming Game</h3>
+                        <p>Players take control of Nix, a talented warrior who has ended up in the Anuc region, far from his home country, in the action-packed 2D side-scroller Nexus. Navigate through difficult levels with changing settings, sophisticated parkour sequences, and frightening enemies.</p>
+                        <div class="project-links">
+                            <span style="color: rgba(255, 255, 255, 0.5); font-size: 0.8em; font-style: italic;">Links coming soon...</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <img src="images/migration.jpeg" alt="Cloud Migration" class="project-image">
+                    <div class="project-content">
+                        <h3>Cloud Migration and OS Hardening</h3>
+                        <p>Oversaw the transfer of three virtual machines to a safe cloud environment on Microsoft Azure: Kali Linux, Windows Server 2022, and Metasploitable. I gained practical experience with risk assessment, OS hardening, utilizing cloud tools to improve operational efficiency, and Active Directory on Windows Server 2022.</p>
+                        <div class="project-links">
+                            <span style="color: rgba(255, 255, 255, 0.5); font-size: 0.8em; font-style: italic;">Links coming soon...</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section">
+        <div class="container">
+            <h2 class="section-title">
+                <i class="fas fa-envelope section-icon"></i>
+                Get In Touch
+            </h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3>Let's Connect!</h3>
+                    <p>I'm always interested in new opportunities, collaborations, or just having a chat about technology and innovation. Feel free to reach out!</p>
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <span>raheem.talhah@gmail.com</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Fullerton, CA</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-university"></i>
+                            <span>California State University, Fullerton</span>
+                        </div>
+                    </div>
+                    <div class="social-links-contact">
+                        <a href="https://github.com/Talhah-Raheem" target="_blank" class="social-link">
+                            <i class="fab fa-github"></i>
+                            <span>GitHub</span>
+                        </a>
+                        <a href="https://www.linkedin.com/in/raheemtalhah" target="_blank" class="social-link">
+                            <i class="fab fa-linkedin"></i>
+                            <span>LinkedIn</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <form>
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">Subject</label>
+                            <input type="text" id="subject" name="subject" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="submit-btn">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer style="background: rgba(15, 15, 35, 0.95); padding: 2rem 0; text-align: center; border-top: 1px solid rgba(0, 212, 255, 0.2);">
+        <div class="container">
+            <p>&copy; 2025 Talhah Raheem. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Scroll progress indicator
+        window.addEventListener('scroll', () => {
+            const scrollTop = window.pageYOffset;
+            const docHeight = document.body.offsetHeight - window.innerHeight;
+            const scrollPercent = (scrollTop / docHeight) * 100;
+            document.getElementById('scrollProgress').style.width = scrollPercent + '%';
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Fade in animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all sections
+        document.querySelectorAll('.section').forEach(section => {
+            section.classList.add('fade-in');
+            observer.observe(section);
+        });
+
+        // Navbar background on scroll
+        window.addEventListener('scroll', () => {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 100) {
+                navbar.style.background = 'rgba(15, 15, 35, 0.98)';
+            } else {
+                navbar.style.background = 'rgba(15, 15, 35, 0.95)';
+            }
+        });
+    </script>
 </body>
-</html> -->
-
-						<!-- Elements -->
-							<article id="elements">
-								<h2 class="major">Elements</h2>
-
-								<section>
-									<h3 class="major">Text</h3>
-									<p>This is <b>bold</b> and this is <strong>strong</strong>. This is <i>italic</i> and this is <em>emphasized</em>.
-									This is <sup>superscript</sup> text and this is <sub>subscript</sub> text.
-									This is <u>underlined</u> and this is code: <code>for (;;) { ... }</code>. Finally, <a href="#">this is a link</a>.</p>
-									<hr />
-									<h2>Heading Level 2</h2>
-									<h3>Heading Level 3</h3>
-									<h4>Heading Level 4</h4>
-									<h5>Heading Level 5</h5>
-									<h6>Heading Level 6</h6>
-									<hr />
-									<h4>Blockquote</h4>
-									<blockquote>Fringilla nisl. Donec accumsan interdum nisi, quis tincidunt felis sagittis eget tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan faucibus. Vestibulum ante ipsum primis in faucibus lorem ipsum dolor sit amet nullam adipiscing eu felis.</blockquote>
-									<h4>Preformatted</h4>
-									<pre><code>i = 0;
-
-while (!deck.isInOrder()) {
-    print 'Iteration ' + i;
-    deck.shuffle();
-    i++;
-}
-
-print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
-								</section>
-
-								<section>
-									<h3 class="major">Lists</h3>
-
-									<h4>Unordered</h4>
-									<ul>
-										<li>Dolor pulvinar etiam.</li>
-										<li>Sagittis adipiscing.</li>
-										<li>Felis enim feugiat.</li>
-									</ul>
-
-									<h4>Alternate</h4>
-									<ul class="alt">
-										<li>Dolor pulvinar etiam.</li>
-										<li>Sagittis adipiscing.</li>
-										<li>Felis enim feugiat.</li>
-									</ul>
-
-									<h4>Ordered</h4>
-									<ol>
-										<li>Dolor pulvinar etiam.</li>
-										<li>Etiam vel felis viverra.</li>
-										<li>Felis enim feugiat.</li>
-										<li>Dolor pulvinar etiam.</li>
-										<li>Etiam vel felis lorem.</li>
-										<li>Felis enim et feugiat.</li>
-									</ol>
-									<h4>Icons</h4>
-									<ul class="icons">
-										<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
-										<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
-										<li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
-										<li><a href="#" class="icon brands fa-github"><span class="label">Github</span></a></li>
-									</ul>
-
-									<h4>Actions</h4>
-									<ul class="actions">
-										<li><a href="#" class="button primary">Default</a></li>
-										<li><a href="#" class="button">Default</a></li>
-									</ul>
-									<ul class="actions stacked">
-										<li><a href="#" class="button primary">Default</a></li>
-										<li><a href="#" class="button">Default</a></li>
-									</ul>
-								</section>
-
-								<section>
-									<h3 class="major">Table</h3>
-									<h4>Default</h4>
-									<div class="table-wrapper">
-										<table>
-											<thead>
-												<tr>
-													<th>Name</th>
-													<th>Description</th>
-													<th>Price</th>
-												</tr>
-											</thead>
-											<tbody>
-												<tr>
-													<td>Item One</td>
-													<td>Ante turpis integer aliquet porttitor.</td>
-													<td>29.99</td>
-												</tr>
-												<tr>
-													<td>Item Two</td>
-													<td>Vis ac commodo adipiscing arcu aliquet.</td>
-													<td>19.99</td>
-												</tr>
-												<tr>
-													<td>Item Three</td>
-													<td> Morbi faucibus arcu accumsan lorem.</td>
-													<td>29.99</td>
-												</tr>
-												<tr>
-													<td>Item Four</td>
-													<td>Vitae integer tempus condimentum.</td>
-													<td>19.99</td>
-												</tr>
-												<tr>
-													<td>Item Five</td>
-													<td>Ante turpis integer aliquet porttitor.</td>
-													<td>29.99</td>
-												</tr>
-											</tbody>
-											<tfoot>
-												<tr>
-													<td colspan="2"></td>
-													<td>100.00</td>
-												</tr>
-											</tfoot>
-										</table>
-									</div>
-
-									<h4>Alternate</h4>
-									<div class="table-wrapper">
-										<table class="alt">
-											<thead>
-												<tr>
-													<th>Name</th>
-													<th>Description</th>
-													<th>Price</th>
-												</tr>
-											</thead>
-											<tbody>
-												<tr>
-													<td>Item One</td>
-													<td>Ante turpis integer aliquet porttitor.</td>
-													<td>29.99</td>
-												</tr>
-												<tr>
-													<td>Item Two</td>
-													<td>Vis ac commodo adipiscing arcu aliquet.</td>
-													<td>19.99</td>
-												</tr>
-												<tr>
-													<td>Item Three</td>
-													<td> Morbi faucibus arcu accumsan lorem.</td>
-													<td>29.99</td>
-												</tr>
-												<tr>
-													<td>Item Four</td>
-													<td>Vitae integer tempus condimentum.</td>
-													<td>19.99</td>
-												</tr>
-												<tr>
-													<td>Item Five</td>
-													<td>Ante turpis integer aliquet porttitor.</td>
-													<td>29.99</td>
-												</tr>
-											</tbody>
-											<tfoot>
-												<tr>
-													<td colspan="2"></td>
-													<td>100.00</td>
-												</tr>
-											</tfoot>
-										</table>
-									</div>
-								</section>
-
-								<section>
-									<h3 class="major">Buttons</h3>
-									<ul class="actions">
-										<li><a href="#" class="button primary">Primary</a></li>
-										<li><a href="#" class="button">Default</a></li>
-									</ul>
-									<ul class="actions">
-										<li><a href="#" class="button">Default</a></li>
-										<li><a href="#" class="button small">Small</a></li>
-									</ul>
-									<ul class="actions">
-										<li><a href="#" class="button primary icon solid fa-download">Icon</a></li>
-										<li><a href="#" class="button icon solid fa-download">Icon</a></li>
-									</ul>
-									<ul class="actions">
-										<li><span class="button primary disabled">Disabled</span></li>
-										<li><span class="button disabled">Disabled</span></li>
-									</ul>
-								</section>
-
-								<section>
-									<h3 class="major">Form</h3>
-									<form method="post" action="#">
-										<div class="fields">
-											<div class="field half">
-												<label for="demo-name">Name</label>
-												<input type="text" name="demo-name" id="demo-name" value="" placeholder="Jane Doe" />
-											</div>
-											<div class="field half">
-												<label for="demo-email">Email</label>
-												<input type="email" name="demo-email" id="demo-email" value="" placeholder="jane@untitled.tld" />
-											</div>
-											<div class="field">
-												<label for="demo-category">Category</label>
-												<select name="demo-category" id="demo-category">
-													<option value="">-</option>
-													<option value="1">Manufacturing</option>
-													<option value="1">Shipping</option>
-													<option value="1">Administration</option>
-													<option value="1">Human Resources</option>
-												</select>
-											</div>
-											<div class="field half">
-												<input type="radio" id="demo-priority-low" name="demo-priority" checked>
-												<label for="demo-priority-low">Low</label>
-											</div>
-											<div class="field half">
-												<input type="radio" id="demo-priority-high" name="demo-priority">
-												<label for="demo-priority-high">High</label>
-											</div>
-											<div class="field half">
-												<input type="checkbox" id="demo-copy" name="demo-copy">
-												<label for="demo-copy">Email me a copy</label>
-											</div>
-											<div class="field half">
-												<input type="checkbox" id="demo-human" name="demo-human" checked>
-												<label for="demo-human">Not a robot</label>
-											</div>
-											<div class="field">
-												<label for="demo-message">Message</label>
-												<textarea name="demo-message" id="demo-message" placeholder="Enter your message" rows="6"></textarea>
-											</div>
-										</div>
-										<ul class="actions">
-											<li><input type="submit" value="Send Message" class="primary" /></li>
-											<li><input type="reset" value="Reset" /></li>
-										</ul>
-									</form>
-								</section>
-
-							</article>
-
-					</div>
-
-				<!-- Footer -->
-					<footer id="footer">
-						<p class="copyright">&copy; 2025 Talhah Raheem.</p>
-					</footer>
-
-			</div>
-
-		<!-- BG -->
-			<div id="bg"></div>
-
-		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
-
-	</body>
 </html>
