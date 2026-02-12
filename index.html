@@ -3,7 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Talhah Raheem - Computer Science Student</title>
+    <title>Talhah Raheem - Software Engineer | AI Enthusiast</title>
+    <meta name="description" content="Talhah Raheem — Computer Science student at CSUF. Building AI-powered applications, full-stack web platforms, and more. Open to Summer 2026 SWE/AI internship opportunities.">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Talhah Raheem - Software Engineer | AI Enthusiast">
+    <meta property="og:description" content="Computer Science student at CSUF building AI-powered applications and full-stack web platforms. Open to Summer 2026 opportunities.">
+    <meta property="og:url" content="https://talhahraheem.dev">
+    <meta property="og:image" content="https://talhahraheem.dev/images/face.jpg">
+
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
@@ -220,6 +232,24 @@
         }
 
         /* Skills Section */
+        .skills-groups {
+            max-width: 800px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .skill-group-label {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #a0a0a0;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.75rem;
+            text-align: center;
+        }
+
         .skills-container {
             display: flex;
             flex-wrap: wrap;
@@ -551,10 +581,19 @@
         }
 
         /* Projects Section */
+        .projects-sub-header {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #a0a0a0;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
         .projects-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
             gap: 2rem;
+            margin-bottom: 3rem;
         }
 
         .project-card {
@@ -565,9 +604,48 @@
             backdrop-filter: blur(10px);
         }
 
+        .project-card.featured {
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            box-shadow: 0 0 20px rgba(0, 212, 255, 0.1);
+        }
+
+        .featured-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #00d4ff, #0099cc);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 12px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 0.5rem;
+        }
+
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .tech-stack span {
+            background: rgba(0, 212, 255, 0.15);
+            color: #00d4ff;
+            padding: 0.2rem 0.6rem;
+            border-radius: 10px;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+
         .project-card:hover {
             transform: translateY(-10px);
             box-shadow: 0 20px 40px rgba(0, 212, 255, 0.2);
+        }
+
+        .project-card.featured:hover {
+            box-shadow: 0 20px 40px rgba(0, 212, 255, 0.35);
+            border-color: #00d4ff;
         }
 
         .project-image {
@@ -579,6 +657,26 @@
 
         .project-card:hover .project-image {
             transform: scale(1.05);
+        }
+
+        .project-image-placeholder {
+            width: 100%;
+            height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.08), rgba(0, 212, 255, 0.03));
+            border-bottom: 1px solid rgba(0, 212, 255, 0.1);
+        }
+
+        .project-image-placeholder i {
+            font-size: 3rem;
+            color: rgba(0, 212, 255, 0.35);
+            transition: color 0.3s ease;
+        }
+
+        .project-card:hover .project-image-placeholder i {
+            color: rgba(0, 212, 255, 0.6);
         }
 
         .project-content {
@@ -860,6 +958,34 @@
             box-shadow: 0 10px 20px rgba(0, 212, 255, 0.3);
         }
 
+        /* Mobile hamburger menu */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 5px;
+            padding: 5px;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 2px;
+            background: #ffffff;
+            transition: all 0.3s ease;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -5px);
+        }
+
         /* Responsive Design */
         @media (max-width: 768px) {
             .hero-content h1 {
@@ -871,8 +997,25 @@
                 text-align: center;
             }
 
+            .hamburger {
+                display: flex;
+            }
+
             .nav-links {
                 display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: rgba(15, 15, 35, 0.98);
+                flex-direction: column;
+                padding: 1rem 2rem;
+                gap: 1rem;
+                border-top: 1px solid rgba(0, 212, 255, 0.2);
+            }
+
+            .nav-links.active {
+                display: flex;
             }
 
             .projects-grid {
@@ -915,14 +1058,19 @@
         <div class="container">
             <div class="nav-container">
                 <div class="logo">Talhah Raheem</div>
-                <ul class="nav-links">
+                <div class="hamburger" id="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <ul class="nav-links" id="navLinks">
                     <li><a href="#about">About</a></li>
-                    <li><a href="#skills">Skills</a></li>
                     <li><a href="#experience">Experience</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#skills">Skills</a></li>
                     <li><a href="#education">Education</a></li>
                     <li><a href="#certifications">Certifications</a></li>
-                    <li><a href="#projects">Projects</a></li>
-                    <!-- <li><a href="#contact">Contact</a></li> -->
+                    <li><a href="#contact">Contact</a></li>
                 </ul>
             </div>
         </div>
@@ -957,37 +1105,9 @@
                 About Me
             </h2>
             <div class="about-text" style="max-width: 800px; margin: 0 auto; text-align: center;">
-                <p style="font-size: 1.2rem; margin-bottom: 2rem;">I'm <span class="highlight">Talhah Raheem</span>, a senior at CSUF studying Computer Science. Here, you can explore my projects, learn more about my background, and find ways to connect.</p>
-                <p style="font-size: 1.1rem; margin-bottom: 2rem;">I'm passionate about <span class="highlight">AI</span>, <span class="highlight">web development</span>, and <span class="highlight">game development</span>. Lately, I've been diving deeper into building real-world applications, constantly exploring new tools and technologies to level up my skills.</p>
-                <p style="font-size: 1.1rem;">When I'm not coding, you'll probably find me at the gym, playing a sport, or playing Rainbow Six Siege.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Skills Section -->
-    <section id="skills" class="section">
-        <div class="container">
-            <h2 class="section-title">
-                <i class="fas fa-code section-icon"></i>
-                Skills
-            </h2>
-            <div class="skills-container">
-                <span class="skill-tag">Python</span>
-                <span class="skill-tag">Java</span>
-                <span class="skill-tag">C++</span>
-                <span class="skill-tag">JavaScript</span>
-                <span class="skill-tag">HTML/CSS</span>
-                <span class="skill-tag">SQL</span>
-                <span class="skill-tag">React</span>
-                <span class="skill-tag">Node.js</span>
-                <span class="skill-tag">Git</span>
-                <span class="skill-tag">Docker</span>
-                <span class="skill-tag">Azure</span>
-                <span class="skill-tag">FastAPI</span>
-                <span class="skill-tag">Machine Learning</span>
-                <span class="skill-tag">Web Development</span>
-                <span class="skill-tag">Game Development</span>
-                <span class="skill-tag">Cloud Computing</span>
+                <p style="font-size: 1.2rem; margin-bottom: 2rem;">I'm <span class="highlight">Talhah Raheem</span>, a senior at Cal State Fullerton studying Computer Science with a focus on <span class="highlight">AI</span> and <span class="highlight">full-stack development</span>.</p>
+                <p style="font-size: 1.1rem; margin-bottom: 2rem;">I enjoy building tools that solve real problems — from <span class="highlight">RAG-powered chatbots</span> to <span class="highlight">campus marketplace platforms</span>. I'm always exploring new technologies and looking for ways to turn ideas into working software.</p>
+                <p style="font-size: 1.1rem;">Outside of coding, you'll usually find me at the gym or playing a sport.</p>
             </div>
         </div>
     </section>
@@ -999,11 +1119,6 @@
                 <i class="fas fa-briefcase section-icon"></i>
                 Experience
             </h2>
-            
-            <!-- Coursework Box -->
-            <div class="coursework-box">
-                <p>Alongside the experience I have, here are some relevant courses I took in university:<br><strong>Java, C++, Discrete Structures, Data Structures, Computer Architecture, Linear Algebra and Differential Equations, Software Engineering, Cyber Security, Web Development, Statistics Applied to Natural Science, Operating Systems, File Structures and Databases, AI, Data Science/Big Data, Web Backend Development, and Compilers.</strong></p>
-            </div>
 
             <div class="experience-timeline">
                 <div class="timeline-item">
@@ -1034,24 +1149,180 @@
                         <p>Hosting and organizing workshops on computer science topics to support student learning and skill-building. Creating educational content and facilitating peer-to-peer learning opportunities for CSUF students.</p>
                     </div>
                 </div>
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <h3>Barista Experience</h3>
-                        <p class="timeline-date">2020 - 2022</p>
-                        <p>Delivered excellent customer service in a fast-paced environment, balanced multiple tasks simultaneously, and collaborated closely with team members to maintain smooth operations while creating a welcoming atmosphere for customers.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="section">
+        <div class="container">
+            <h2 class="section-title">
+                <i class="fas fa-project-diagram section-icon"></i>
+                Projects
+            </h2>
+            <p class="projects-sub-header">Featured</p>
+            <div class="projects-grid">
+                <div class="project-card featured">
+                    <img src="images/EmpowerSleep.png" alt="EmpowerSleep-AI" class="project-image">
+                    <div class="project-content">
+                        <span class="featured-badge">Featured</span>
+                        <h3>EmpowerSleep-AI</h3>
+                        <p>A sleep education chatbot powered by RAG (Retrieval-Augmented Generation) using content from the EmpowerSleep blog and textbooks. Answers sleep-related questions with cited sources using FAISS vector search and GPT-4o-mini.</p>
+                        <div class="tech-stack">
+                            <span>FastAPI</span>
+                            <span>Next.js</span>
+                            <span>TypeScript</span>
+                            <span>FAISS</span>
+                            <span>GPT-4o-mini</span>
+                            <span>RAG</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/Talhah-Raheem/EmpowerSleep-AI" target="_blank" class="project-link"><i class="fab fa-github"></i> GitHub</a>
+                        </div>
                     </div>
                 </div>
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <h3>Customer Service Background</h3>
-                        <p class="timeline-date">2019 - 2022</p>
-                        <p>Developed strong communication, teamwork, and problem-solving skills through diverse customer service roles. Gained valuable experience in handling complex situations and working effectively with diverse teams.</p>
+                <div class="project-card featured">
+                    <img src="images/WISE.png" alt="WISE Reflect" class="project-image">
+                    <div class="project-content">
+                        <span class="featured-badge">Featured</span>
+                        <h3>WISE Reflect</h3>
+                        <p>A Chrome extension that guides students through the WISE reflection framework while providing AI-generated feedback. Features a Node.js/SQLite backend with token-based authentication for secure OpenAI API calls.</p>
+                        <div class="tech-stack">
+                            <span>JavaScript</span>
+                            <span>Node.js</span>
+                            <span>SQLite</span>
+                            <span>OpenAI API</span>
+                            <span>Chrome Extension</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/Talhah-Raheem/WISE_AI" target="_blank" class="project-link"><i class="fab fa-github"></i> GitHub</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card featured">
+                    <img src="images/TradeU.png" alt="TradeU" class="project-image">
+                    <div class="project-content">
+                        <span class="featured-badge">Featured</span>
+                        <h3>TradeU</h3>
+                        <p>A peer-to-peer marketplace platform for college students to buy, sell, and trade items within their campus community. Features product listings, direct messaging, secure checkout, and user authentication.</p>
+                        <div class="tech-stack">
+                            <span>Next.js 15</span>
+                            <span>React 19</span>
+                            <span>TypeScript</span>
+                            <span>Tailwind CSS</span>
+                            <span>Supabase</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/Talhah-Raheem/tradeu" target="_blank" class="project-link"><i class="fab fa-github"></i> GitHub</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <p class="projects-sub-header">More Projects</p>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-image-placeholder"><i class="fas fa-music"></i></div>
+                    <div class="project-content">
+                        <h3>HarmonyAI</h3>
+                        <p>A mood-based music recommendation system that analyzes emotional content from user input to suggest matching songs. Uses VADER sentiment analysis to identify emotion keywords and provide personalized recommendations, operating entirely offline.</p>
+                        <div class="project-links">
+                            <a href="https://github.com/Talhah-Raheem/HarmonyAI" target="_blank" class="project-link"><i class="fab fa-github"></i> GitHub</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-image-placeholder"><i class="fas fa-check-circle"></i></div>
+                    <div class="project-content">
+                        <h3>Lock-In</h3>
+                        <p>A focused task management app with smart sorting by due date, a 5-second undo window, filtering between pending and completed items, and keyboard shortcuts. Built with Next.js 15, React 19, TypeScript, and Tailwind CSS.</p>
+                        <div class="project-links">
+                            <a href="https://github.com/Talhah-Raheem/lock_in" target="_blank" class="project-link"><i class="fab fa-github"></i> GitHub</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-image-placeholder"><i class="fas fa-graduation-cap"></i></div>
+                    <div class="project-content">
+                        <h3>School Information Sorter</h3>
+                        <p>A C++ application that manages and organizes student information using object-oriented design principles. Features classes for Students, Courses, and StudentList with dedicated input/output handling modules.</p>
+                        <div class="project-links">
+                            <a href="https://github.com/Talhah-Raheem/SchoolInformationSorter" target="_blank" class="project-link"><i class="fab fa-github"></i> GitHub</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <img src="images/nexus.png" alt="Nexus Game" class="project-image">
+                    <div class="project-content">
+                        <h3>Nexus 2-D Platforming Game</h3>
+                        <p>An action-packed 2D side-scroller where players control Nix, navigating through difficult levels with changing settings, sophisticated parkour sequences, and frightening enemies.</p>
+                        <div class="project-links">
+                            <a href="https://github.com/Talhah-Raheem/ProjectNexus" target="_blank" class="project-link"><i class="fab fa-github"></i> GitHub</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <img src="images/migration.jpeg" alt="Cloud Migration" class="project-image">
+                    <div class="project-content">
+                        <h3>Cloud Migration and OS Hardening</h3>
+                        <p>Migrated three virtual machines (Kali Linux, Windows Server 2022, Metasploitable) to Microsoft Azure. Gained hands-on experience with risk assessment, OS hardening, Active Directory, and cloud operations.</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- Skills Section -->
+    <section id="skills" class="section">
+        <div class="container">
+            <h2 class="section-title">
+                <i class="fas fa-code section-icon"></i>
+                Skills
+            </h2>
+            <div class="skills-groups">
+                <div>
+                    <p class="skill-group-label">Languages</p>
+                    <div class="skills-container">
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">Java</span>
+                        <span class="skill-tag">C++</span>
+                        <span class="skill-tag">JavaScript</span>
+                        <span class="skill-tag">TypeScript</span>
+                        <span class="skill-tag">SQL</span>
+                        <span class="skill-tag">HTML/CSS</span>
+                    </div>
+                </div>
+                <div>
+                    <p class="skill-group-label">Frameworks & Libraries</p>
+                    <div class="skills-container">
+                        <span class="skill-tag">React</span>
+                        <span class="skill-tag">Next.js</span>
+                        <span class="skill-tag">Node.js</span>
+                        <span class="skill-tag">FastAPI</span>
+                        <span class="skill-tag">Tailwind CSS</span>
+                    </div>
+                </div>
+                <div>
+                    <p class="skill-group-label">Tools & Platforms</p>
+                    <div class="skills-container">
+                        <span class="skill-tag">Git</span>
+                        <span class="skill-tag">Docker</span>
+                        <span class="skill-tag">Azure</span>
+                        <span class="skill-tag">Supabase</span>
+                    </div>
+                </div>
+                <div>
+                    <p class="skill-group-label">Domains</p>
+                    <div class="skills-container">
+                        <span class="skill-tag">Machine Learning</span>
+                        <span class="skill-tag">Web Development</span>
+                        <span class="skill-tag">Game Development</span>
+                        <span class="skill-tag">Cloud Computing</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!-- Education Section -->
     <section id="education" class="section">
@@ -1069,11 +1340,11 @@
                         <div class="education-info">
                             <h3>California State University, Fullerton</h3>
                             <p class="education-degree">Bachelor of Science in Computer Science</p>
-                            <p class="education-date">2021 - Present</p>
+                            <p class="education-date">2021 - 2026 (Expected)</p>
                         </div>
                     </div>
                     <div class="education-details">
-                        <p>Currently pursuing a Bachelor's degree in Computer Science with a focus on software engineering, algorithms, and artificial intelligence. Actively involved in student organizations and hands-on projects that prepare for a career in technology.</p>
+                        <p>Pursuing a Bachelor's degree in Computer Science with a focus on software engineering, algorithms, and artificial intelligence. Actively involved in student organizations and hands-on projects that prepare for a career in technology.</p>
                         <div class="education-highlights">
                             <div class="highlight-item">
                                 <i class="fas fa-code"></i>
@@ -1089,6 +1360,10 @@
                             </div>
                         </div>
                     </div>
+                </div>
+
+                <div class="coursework-box" style="margin-top: 2rem; max-width: 100%;">
+                    <p><strong>Relevant Coursework:</strong> Java, C++, Discrete Structures, Data Structures, Computer Architecture, Linear Algebra and Differential Equations, Software Engineering, Cyber Security, Web Development, Statistics Applied to Natural Science, Operating Systems, File Structures and Databases, AI, Data Science/Big Data, Web Backend Development, and Compilers.</p>
                 </div>
             </div>
         </div>
@@ -1115,163 +1390,43 @@
         </div>
     </section>
 
-    <!-- Projects Section -->
-    <section id="projects" class="section">
-        <div class="container">
-            <h2 class="section-title">
-                <i class="fas fa-project-diagram section-icon"></i>
-                Projects
-            </h2>
-            <div class="projects-grid">
-                <div class="project-card">
-                    <img src="images/wise.png" alt="WISE Reflect" class="project-image">
-                    <div class="project-content">
-                        <h3>WISE Reflect</h3>
-                        <p>A Chrome extension that guides students through the WISE reflection framework while providing AI-generated feedback. Built with JavaScript for the frontend Chrome extension and a Node.js/SQLite backend that securely handles OpenAI API calls with token-based authentication.</p>
-                        <div class="project-links">
-                            <a href="https://github.com/Talhah-Raheem/WISE_AI" target="_blank" class="project-link"><i class="fab fa-github"></i> GitHub</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="project-card">
-                    <img src="images/tradeu.png" alt="TradeU" class="project-image">
-                    <div class="project-content">
-                        <h3>TradeU</h3>
-                        <p>A peer-to-peer marketplace platform for college students to buy, sell, and trade items within their campus community. Features product listings, direct messaging between buyers and sellers, secure checkout, and user authentication. Built with Next.js 15, TypeScript, React 19, Tailwind CSS, and Supabase.</p>
-                        <div class="project-links">
-                            <a href="https://github.com/Talhah-Raheem/tradeu" target="_blank" class="project-link"><i class="fab fa-github"></i> GitHub</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="project-card">
-                    <img src="images/harmonyai.png" alt="HarmonyAI" class="project-image">
-                    <div class="project-content">
-                        <h3>HarmonyAI</h3>
-                        <p>A mood-based music recommendation system that analyzes emotional content from user input to suggest matching songs. Users describe their emotional state and the system identifies emotion keywords to provide personalized song recommendations. Built with Python, Streamlit, and VADER sentiment analysis, operating entirely offline without external APIs.</p>
-                        <div class="project-links">
-                            <a href="https://github.com/Talhah-Raheem/HarmonyAI" target="_blank" class="project-link"><i class="fab fa-github"></i> GitHub</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="project-card">
-                    <img src="images/lockin.png" alt="Lock-In" class="project-image">
-                    <div class="project-content">
-                        <h3>Lock-In</h3>
-                        <p>A focused task management application designed to help users organize their work and maintain productivity. Features smart task sorting by due date, quick date options, a 5-second undo window for deleted tasks, filtering between pending and completed items, and keyboard shortcuts. Built with Next.js 15, React 19, TypeScript, and Tailwind CSS.</p>
-                        <div class="project-links">
-                            <a href="https://github.com/Talhah-Raheem/lock_in" target="_blank" class="project-link"><i class="fab fa-github"></i> GitHub</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="project-card">
-                    <img src="images/schoolsorter.png" alt="School Information Sorter" class="project-image">
-                    <div class="project-content">
-                        <h3>School Information Sorter</h3>
-                        <p>A C++ application that manages and organizes student information using object-oriented design principles. Features classes for Students, Courses, and StudentList with dedicated input/output handling modules for reading and producing organized student records.</p>
-                        <div class="project-links">
-                            <a href="https://github.com/Talhah-Raheem/SchoolInformationSorter" target="_blank" class="project-link"><i class="fab fa-github"></i> GitHub</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="project-card">
-                    <img src="images/empowersleep.png" alt="EmpowerSleep-AI" class="project-image">
-                    <div class="project-content">
-                        <h3>EmpowerSleep-AI</h3>
-                        <p>A sleep education chatbot powered by RAG (Retrieval-Augmented Generation) using content from the EmpowerSleep blog and textbooks. Answers sleep-related questions with cited sources using FAISS vector search and GPT-4o-mini. Built with a FastAPI backend and Next.js/TypeScript frontend.</p>
-                        <div class="project-links">
-                            <a href="https://github.com/Talhah-Raheem/EmpowerSleep-AI" target="_blank" class="project-link"><i class="fab fa-github"></i> GitHub</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="project-card">
-                    <img src="images/nexus.png" alt="Nexus Game" class="project-image">
-                    <div class="project-content">
-                        <h3>Nexus 2-D Platforming Game</h3>
-                        <p>Players take control of Nix, a talented warrior who has ended up in the Anuc region, far from his home country, in the action-packed 2D side-scroller Nexus. Navigate through difficult levels with changing settings, sophisticated parkour sequences, and frightening enemies.</p>
-                        <div class="project-links">
-                            <a href="https://github.com/Talhah-Raheem/ProjectNexus" target="_blank" class="project-link"><i class="fab fa-github"></i> GitHub</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="project-card">
-                    <img src="images/migration.jpeg" alt="Cloud Migration" class="project-image">
-                    <div class="project-content">
-                        <h3>Cloud Migration and OS Hardening</h3>
-                        <p>Oversaw the transfer of three virtual machines to a safe cloud environment on Microsoft Azure: Kali Linux, Windows Server 2022, and Metasploitable. I gained practical experience with risk assessment, OS hardening, utilizing cloud tools to improve operational efficiency, and Active Directory on Windows Server 2022.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section - Commented out until form setup is ready -->
-    <!--
     <section id="contact" class="section">
         <div class="container">
             <h2 class="section-title">
                 <i class="fas fa-envelope section-icon"></i>
                 Get In Touch
             </h2>
-            <div class="contact-content">
-                <div class="contact-info">
-                    <h3>Let's Connect!</h3>
-                    <p>I'm always interested in new opportunities, collaborations, or just having a chat about technology and innovation. Feel free to reach out!</p>
-                    <div class="contact-details">
-                        <div class="contact-item">
-                            <i class="fas fa-envelope"></i>
-                            <span>raheem.talhah@gmail.com</span>
-                        </div>
-                        <div class="contact-item">
-                            <i class="fas fa-map-marker-alt"></i>
-                            <span>Fullerton, CA</span>
-                        </div>
-                        <div class="contact-item">
-                            <i class="fas fa-university"></i>
-                            <span>California State University, Fullerton</span>
-                        </div>
+            <div style="text-align: center; max-width: 600px; margin: 0 auto;">
+                <p style="color: #e0e0e0; font-size: 1.1rem; margin-bottom: 1rem;">I'm always interested in new opportunities, collaborations, or just having a chat about technology.</p>
+                <p style="color: #00d4ff; font-weight: 600; font-size: 1rem; margin-bottom: 2rem;">Open to Summer 2026 SWE / AI internship opportunities</p>
+                <div class="contact-details" style="display: flex; flex-direction: column; align-items: center; gap: 0.75rem; margin-bottom: 2rem;">
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <span>raheem.talhah@gmail.com</span>
                     </div>
-                    <div class="social-links-contact">
-                        <a href="https://github.com/Talhah-Raheem" target="_blank" class="social-link">
-                            <i class="fab fa-github"></i>
-                            <span>GitHub</span>
-                        </a>
-                        <a href="https://www.linkedin.com/in/raheemtalhah" target="_blank" class="social-link">
-                            <i class="fab fa-linkedin"></i>
-                            <span>LinkedIn</span>
-                        </a>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Fullerton, CA</span>
                     </div>
                 </div>
-                <div class="contact-form">
-                    <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
-                        <input type="hidden" name="_subject" value="New contact form submission from your website">
-                        <div class="form-group">
-                            <label for="name">Name</label>
-                            <input type="text" id="name" name="name" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="email">Email</label>
-                            <input type="email" id="email" name="email" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="subject">Subject</label>
-                            <input type="text" id="subject" name="subject" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="message">Message</label>
-                            <textarea id="message" name="message" rows="5" required></textarea>
-                        </div>
-                        <button type="submit" class="submit-btn">Send Message</button>
-                    </form>
+                <div class="social-links-contact" style="justify-content: center;">
+                    <a href="https://github.com/Talhah-Raheem" target="_blank" class="social-link">
+                        <i class="fab fa-github"></i>
+                        <span>GitHub</span>
+                    </a>
+                    <a href="https://www.linkedin.com/in/raheemtalhah" target="_blank" class="social-link">
+                        <i class="fab fa-linkedin"></i>
+                        <span>LinkedIn</span>
+                    </a>
                 </div>
             </div>
         </div>
     </section>
-    -->
 
     <!-- Footer -->
     <footer style="background: rgba(15, 15, 35, 0.95); padding: 2rem 0; text-align: center; border-top: 1px solid rgba(0, 212, 255, 0.2);">
         <div class="container">
-            <p>&copy; 2025 Talhah Raheem. All rights reserved.</p>
+            <p>&copy; 2026 Talhah Raheem. All rights reserved.</p>
         </div>
     </footer>
 
@@ -1389,6 +1544,23 @@
             } else {
                 navbar.style.background = 'rgba(15, 15, 35, 0.95)';
             }
+        });
+
+        // Mobile hamburger menu toggle
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+
+        // Close mobile menu when a link is clicked
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navLinks.classList.remove('active');
+            });
         });
     </script>
 </body>
