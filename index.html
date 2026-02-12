@@ -362,6 +362,44 @@
             margin-bottom: 1rem;
         }
 
+        .experience-timeline .timeline-content ul {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 1rem 0;
+        }
+
+        .experience-timeline .timeline-content ul li {
+            color: #e0e0e0;
+            line-height: 1.6;
+            padding-left: 1.2rem;
+            position: relative;
+            margin-bottom: 0.5rem;
+        }
+
+        .experience-timeline .timeline-content ul li::before {
+            content: '▹';
+            color: #00d4ff;
+            position: absolute;
+            left: 0;
+            font-size: 1rem;
+        }
+
+        .experience-timeline .experience-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 0.75rem;
+        }
+
+        .experience-timeline .experience-tech span {
+            background: rgba(0, 212, 255, 0.1);
+            color: #00d4ff;
+            padding: 0.25rem 0.6rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+
         /* Responsive design for alternating timeline */
         @media (max-width: 768px) {
             .experience-timeline::before {
@@ -1125,28 +1163,54 @@
                     <div class="timeline-content">
                         <h3>Software Engineer Intern - Empower Sleep</h3>
                         <p class="timeline-date">Jan 2026 - Present</p>
-                        <p>Working on AI-driven software solutions to support digital health and sleep-related applications. Assisting with research, prototyping, and development of tools that improve user experience and access to sleep education.</p>
+                        <ul>
+                            <li>Building AI-driven software solutions to support digital health and sleep education platforms</li>
+                            <li>Researching, prototyping, and developing tools that improve user experience and access to sleep-related resources</li>
+                        </ul>
+                        <div class="experience-tech">
+                            <span>Python</span>
+                            <span>FastAPI</span>
+                            <span>Next.js</span>
+                            <span>RAG</span>
+                        </div>
                     </div>
                 </div>
                 <div class="timeline-item">
                     <div class="timeline-content">
                         <h3>Software Engineer Intern - SonarX</h3>
                         <p class="timeline-date">Aug 2025 - Present</p>
-                        <p>Developing an AI-driven monitoring system to track and analyze blockchain protocol upgrades across 15+ networks, enabling early detection of breaking changes and governance events. Built an autonomous agent pipeline integrating repository watchers, event normalization, LLM-based reasoning, and real-time Slack notifications to surface high-impact updates with low latency. Designed intelligent alerting workflows that enrich signals with contextual metadata, reduce noise, and improve response readiness through automated summaries and runbook-style guidance. Contributed to a scalable monitoring infrastructure using Python, PostgreSQL, Docker, and observability tooling, with emphasis on reliability, validation testing, and system resilience.</p>
+                        <ul>
+                            <li>Developing an AI-driven monitoring system to track and analyze blockchain protocol upgrades across 15+ networks</li>
+                            <li>Built an autonomous agent pipeline integrating repo watchers, event normalization, LLM-based reasoning, and real-time Slack notifications</li>
+                            <li>Designed intelligent alerting workflows that enrich signals with contextual metadata and reduce noise</li>
+                            <li>Contributed to scalable monitoring infrastructure with emphasis on reliability, validation testing, and system resilience</li>
+                        </ul>
+                        <div class="experience-tech">
+                            <span>Python</span>
+                            <span>PostgreSQL</span>
+                            <span>Docker</span>
+                            <span>LLMs</span>
+                        </div>
                     </div>
                 </div>
                 <div class="timeline-item">
                     <div class="timeline-content">
                         <h3>Vice President of Projects - Muslim Tech Collaborative (MTC)</h3>
                         <p class="timeline-date">2023 - Present</p>
-                        <p>Leading hands-on tech projects to help students better understand real-world applications. Organizing workshops and events to bridge the gap between academic learning and practical implementation in the tech industry.</p>
+                        <ul>
+                            <li>Leading hands-on tech projects to help students understand real-world applications</li>
+                            <li>Organizing workshops and events to bridge the gap between academic learning and industry practice</li>
+                        </ul>
                     </div>
                 </div>
                 <div class="timeline-item">
                     <div class="timeline-content">
                         <h3>Developer Officer - Association for Computing Machinery (ACM)</h3>
                         <p class="timeline-date">2023 - Present</p>
-                        <p>Hosting and organizing workshops on computer science topics to support student learning and skill-building. Creating educational content and facilitating peer-to-peer learning opportunities for CSUF students.</p>
+                        <ul>
+                            <li>Hosting and organizing workshops on computer science topics to support student learning</li>
+                            <li>Creating educational content and facilitating peer-to-peer learning opportunities for CSUF students</li>
+                        </ul>
                     </div>
                 </div>
             </div>
